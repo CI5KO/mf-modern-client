@@ -14,18 +14,21 @@ export default defineConfig({
         new GenerateSW({
           clientsClaim: true,
           skipWaiting: true,
+          swDest: "service-worker.js",
           runtimeCaching: [
             {
               urlPattern: /\.(?:js|css|html|json|png|jpg|jpeg|svg|gif)$/,
-              handler: "CacheFirst",
+              handler: "NetworkFirst",
             },
           ],
         }),
         new WebpackPwaManifest.default({
+          filename: "manifest.json",
           name: "Modern PWA App",
           short_name: "ModernApp",
           description: "Modern.js Progressive Web Application",
           start_url: "/",
+          publicPath: "/",
           display: "standalone",
           background_color: "#ffffff",
           theme_color: "#1890ff",
