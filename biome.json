@@ -9,28 +9,11 @@
     "enabled": false,
     "indentStyle": "space"
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "arrowParentheses": "asNeeded",
-      "jsxQuoteStyle": "double",
-      "lineWidth": 80
-    }
-  },
-  "linter": {
-    "enabled": false,
-    "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noDuplicateFontNames": "off"
-      }
-    }
-  },
   "organizeImports": {
-    "enabled": true
+    "enabled": false
   },
   "files": {
-    "ignoreUnknown": true,
+    "ignoreUnknown": false,
     "ignore": [".vscode/**/*", "node_modules/**/*", "dist/**/*", "**"]
   }
 }
