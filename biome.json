@@ -1,10 +1,4 @@
 {
-  "vcs": {
-    "enabled": false,
-    "defaultBranch": "main",
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
   "formatter": {
     "enabled": false,
     "indentStyle": "space"
