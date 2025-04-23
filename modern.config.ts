@@ -1,5 +1,6 @@
 import { appTools, defineConfig } from "@modern-js/app-tools";
 import { moduleFederationPlugin } from "@module-federation/modern-js";
+import { tailwindcssPlugin } from "@modern-js/plugin-tailwindcss";
 import { GenerateSW } from "workbox-webpack-plugin";
 import * as WebpackPwaManifest from "webpack-pwa-manifest";
 import path from "path";
@@ -51,5 +52,6 @@ export default defineConfig({
       bundler: "webpack",
     }),
     moduleFederationPlugin(),
+    tailwindcssPlugin(),
   ],
 });

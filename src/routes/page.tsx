@@ -4,7 +4,7 @@ import { Button } from "Components/Atoms";
 const Index = (): JSX.Element => {
   return (
     <div>
-      <h1>Host Container</h1>
+      <h1 className="text-xl">Host Container</h1>
       <Button>External Button</Button>
     </div>
   );

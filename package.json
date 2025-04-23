@@ -31,7 +31,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "webpack-pwa-manifest": "^4.3.0",
-    "workbox-webpack-plugin": "^7.3.0"
+    "workbox-webpack-plugin": "^7.3.0",
+    "@modern-js/plugin-tailwindcss": "2.65.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -44,6 +45,7 @@
     "lint-staged": "~15.4.0",
     "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "~5.7.3"
+    "typescript": "~5.7.3",
+    "tailwindcss": "~3.4.14"
   }
 }

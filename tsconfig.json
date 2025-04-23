@@ -5,11 +5,26 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "@shared/*": ["./shared/*"],
-      "*": ["./@mf-types/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@shared/*": [
+        "./shared/*"
+      ],
+      "*": [
+        "./@mf-types/*"
+      ]
     }
   },
-  "include": ["src", "shared", "config", "modern.config.ts", "./@mf-types/*"],
-  "exclude": ["**/node_modules"]
+  "include": [
+    "src",
+    "shared",
+    "config",
+    "modern.config.ts",
+    "./@mf-types/*",
+    "tailwind.config.ts"
+  ],
+  "exclude": [
+    "**/node_modules"
+  ]
 }
