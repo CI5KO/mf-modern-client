@@ -1,7 +1,10 @@
 import React, { useState, type ReactNode } from "react";
-import { redirect } from "@modern-js/runtime/router";
+import { useNavigate } from "@modern-js/runtime/router";
+import Cookies from "js-cookie";
 
 export default function Index(): ReactNode {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -19,8 +22,8 @@ export default function Index(): ReactNode {
     });
     const data = await response.json();
     if (!data.key) return;
-    redirect("/remote");
-    console.log(data.key);
+    Cookies.set("token", data.key);
+    navigate("/remote");
   };
 
   return (
