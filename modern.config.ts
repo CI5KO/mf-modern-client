@@ -1,11 +1,14 @@
 import { appTools, defineConfig } from "@modern-js/app-tools";
 import { moduleFederationPlugin } from "@module-federation/modern-js";
 import { tailwindcssPlugin } from "@modern-js/plugin-tailwindcss";
+import { bffPlugin } from "@modern-js/plugin-bff";
+import { expressPlugin } from "@modern-js/plugin-express";
 import { GenerateSW } from "workbox-webpack-plugin";
 import * as WebpackPwaManifest from "webpack-pwa-manifest";
 import path from "path";
 
 export default defineConfig({
+  source: { globalVars: { "process.env.API": process.env.API } },
   runtime: {
     router: true,
   },
@@ -53,5 +56,7 @@ export default defineConfig({
     }),
     moduleFederationPlugin(),
     tailwindcssPlugin(),
+    bffPlugin(),
+    expressPlugin(),
   ],
 });

@@ -1,13 +1,65 @@
-import React, { useState, Suspense } from "react";
-import { Button } from "Components/Atoms";
+import React, { useState, type ReactNode } from "react";
+import { redirect } from "@modern-js/runtime/router";
 
-const Index = (): JSX.Element => {
+export default function Index(): ReactNode {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleSubmit = async () => {
+    console.log(email, password);
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    const data = await response.json();
+    if (!data.key) return;
+    redirect("/remote");
+    console.log(data.key);
+  };
+
   return (
-    <div>
-      <h1 className="text-xl">Host Container</h1>
-      <Button>External Button</Button>
+    <div className="container mx-auto max-w-[1440px]">
+      <div className="grid h-screen content-center justify-center">
+        <h1 className="text-2xl text-center">ModernJS App</h1>
+        <form
+          className="grid"
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <input
+            type="email"
+            placeholder="Email"
+            className="rounded-md bg-gray-900 text-white my-2 p-2 focus:border-white"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="rounded-md bg-gray-900 text-white my-2 p-2 focus:border-white"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="rounded-md bg-gray-900 text-white my-2 p-2"
+            onClick={(event) => {
+              event.preventDefault();
+              handleSubmit();
+            }}
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
-};
-
-export default Index;
+}

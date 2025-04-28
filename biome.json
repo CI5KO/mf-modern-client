@@ -1,7 +1,6 @@
 {
   "formatter": {
-    "enabled": false,
-    "indentStyle": "space"
+    "enabled": false
   },
   "files": {
     "ignore": [".vscode/**/*", "node_modules/**/*", "dist/**/*", "**"]

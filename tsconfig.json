@@ -13,6 +13,9 @@
       ],
       "*": [
         "./@mf-types/*"
+      ],
+      "@api/*": [
+        "./api/lambda/*"
       ]
     }
   },
@@ -22,7 +25,8 @@
     "config",
     "modern.config.ts",
     "./@mf-types/*",
-    "tailwind.config.ts"
+    "tailwind.config.ts",
+    "api"
   ],
   "exclude": [
     "**/node_modules"
