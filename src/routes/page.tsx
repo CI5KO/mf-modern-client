@@ -1,6 +1,16 @@
-import React, { useState, type ReactNode } from "react";
+import React, { Suspense, lazy, useState, type ReactNode } from "react";
 import { useNavigate } from "@modern-js/runtime/router";
 import Cookies from "js-cookie";
+
+const Button = lazy(() =>
+  import("Components/Atoms").then((module) => ({ default: module.Button }))
+);
+const Input = lazy(() =>
+  import("Components/Atoms").then((module) => ({ default: module.Input }))
+);
+const Title = lazy(() =>
+  import("Components/Atoms").then((module) => ({ default: module.Title }))
+);
 
 export default function Index(): ReactNode {
   const navigate = useNavigate();
@@ -29,7 +39,9 @@ export default function Index(): ReactNode {
   return (
     <div className="container mx-auto max-w-[1440px]">
       <div className="grid h-screen content-center justify-center">
-        <h1 className="text-2xl text-center">ModernJS App</h1>
+        <Suspense fallback={<div>Cargando título...</div>}>
+          <Title>ModernJS App</Title>
+        </Suspense>
         <form
           className="grid"
           onSubmit={(event) => {
@@ -37,30 +49,25 @@ export default function Index(): ReactNode {
             handleSubmit();
           }}
         >
-          <input
-            type="email"
-            placeholder="Email"
-            className="rounded-md bg-gray-900 text-white my-2 p-2 focus:border-white"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="rounded-md bg-gray-900 text-white my-2 p-2 focus:border-white"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="rounded-md bg-gray-900 text-white my-2 p-2"
-            onClick={(event) => {
-              event.preventDefault();
-              handleSubmit();
-            }}
-          >
-            Login
-          </button>
+          <Suspense fallback={<div>Cargando input...</div>}>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(value: string) => setEmail(value)}
+            />
+          </Suspense>
+          <Suspense fallback={<div>Cargando input...</div>}>
+            <Input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(value: string) => setPassword(value)}
+            />
+          </Suspense>
+          <Suspense fallback={<div>Cargando botón...</div>}>
+            <Button onClick={() => handleSubmit()}>Login</Button>
+          </Suspense>
         </form>
       </div>
     </div>
