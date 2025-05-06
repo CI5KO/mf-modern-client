@@ -1,4 +1,4 @@
-import React, { useState, type ReactNode } from "react";
+import React, { lazy, Suspense, useState, type ReactNode } from "react";
 import { useNavigate } from "@modern-js/runtime/router";
 import Button from "@/utils/components/Button";
 import Input from "@/utils/components/Input";
@@ -11,9 +11,9 @@ import Cookies from "js-cookie";
 // const Input = lazy(() =>
 //   import("Components/Atoms").then((module) => ({ default: module.Input }))
 // );
-// const Title = lazy(() =>
-//   import("Components/Atoms").then((module) => ({ default: module.Title }))
-// );
+const Title = lazy(() =>
+  import("Components/Atoms").then((module) => ({ default: module.Title }))
+);
 
 export default function Index(): ReactNode {
   const navigate = useNavigate();
@@ -42,7 +42,9 @@ export default function Index(): ReactNode {
   return (
     <div className="container mx-auto max-w-[1440px]">
       <div className="grid h-screen content-center justify-center">
-        <h1>ModernJS App</h1>
+        <Suspense fallback={<p>Title</p>}>
+          <Title>Modern Client Test</Title>
+        </Suspense>
         <form
           className="grid"
           onSubmit={(event) => {
